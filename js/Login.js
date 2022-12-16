@@ -3,13 +3,16 @@ class Users{
         this.username = username;
         this.password = password;
         this.verify = () => { 
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            let valpass=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*[0-9]).{8,}$/gm;
+
             var message = document.getElementById('messageP');
-            if(this.username == 'admin' && this.password == '123'){
+            if(this.username.match(validRegex) && this.password.match(valpass)){
                 message.innerHTML = `Welcome ${this.username}`;
                 message.classList.add('text-warning');
                 message.classList.remove('text-danger');
             }
-            else if(this.username != 'admin' || this.password != '123'){
+            else if(!this.username.match(validRegex) || !this.password.match(valpass)){
                 message.innerHTML = ` Not Registered`;
                 message.classList.add('text-danger');
             }
@@ -19,7 +22,6 @@ class Users{
 }
 
 let submitBtn = document.getElementById('submitBtn');
-
 let trythis = ()=>{
     var userName = document.getElementById('userName').value;
     var userPass = document.getElementById('userPass').value;

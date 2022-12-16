@@ -12,23 +12,34 @@ class Completed extends Tasks{
 let addBtn = document.getElementById('taskBtn');
 let taskList = document.getElementById('list');
 let completeList = document.getElementById('completeList');
+if(localStorage.getItem("Tasks")==null){
+    container=[];
+}
+else{
+container = JSON.parse(localStorage.getItem("Tasks"));
+}
 
-let container = []; //initialization
+// let container = []; //initialization
 let complete = [];
 
 let newTask = () => {
     let taskName = document.getElementById('taskName').value;
     let task = new Tasks(taskName);
+    
     container.push(task);
+    localStorage.setItem ("Tasks" , JSON.stringify(container));
+
     displayTask();
 }
 let displayTask = () => {
+    var taskLocalStorage = JSON.parse(localStorage.getItem("Tasks"));
+
     let result = '';
 
     if(container.length >= 1){
     for(let i = 0 ;i < container.length; i++)
             result += `<tr>
-                        <td class="col-9 fs-4">${container[i].taskName}</td>
+                        <td class="col-9 fs-4">${taskLocalStorage[i].taskName}</td>
                         <td>
                         <i role="button" onclick="completeThis(${i})" class="text-success fs-4 mx-3 fas fa-check-square"></i>
                         <i role="button" onclick="deleteThis(${i})" class=" text-danger fs-5 fas fa-trash"></i>
