@@ -7,25 +7,23 @@
 
     </head>
     <body>
-        <div class="bg-light w-50 m-auto p-4 mt-5 rounded fw-light">
-            
-            <table class="table">
-                <tbody id="list">
-                </tbody>
-            </table>
-
+        <div class="w-50 m-auto p-4 mt-5 rounded fw-light">
             <section class="row justify-content-around my-4">
                 <h4 class="col-3">Task</h4>
                 <input type="text" class="form-control w-50" id="taskName" placeholder="task name">
                 <button class="col-2 btn btn-primary" id="taskBtn">Add</button>
             </section>
+        </div>
+        
+        <div class="w-75 mx-auto mt-5 bg-warning rounded-4 text-light">
+            <div class="p-4" id="list" >
+            </div>
+        </div>
+        
+        <div class="w-75 mx-auto bg-success rounded-4 mt-5" >
+            <div class="p-4"  id="completeList">
 
-            <table class="table">
-                <tbody id="completeList">
-                </tbody>
-            </table>
-           
-
+            </div>
         </div>
         <script src="js/todo.js"></script>
     </body>
